@@ -118,6 +118,52 @@
   font-size: 1.2rem;
 }
 
+/* Vertical Title Layout */
+.panel-content-vertical {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  width: 100%;
+  height: 100%;
+  padding-left: 2rem;
+}
+
+.vertical-title {
+  display: flex;
+  flex-direction: column;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  margin: 0;
+  line-height: 1;
+}
+
+.vertical-title-top,
+.vertical-title-bottom {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 5rem;
+  letter-spacing: 0.02em;
+}
+
+.vertical-title-top {
+  font-weight: 400;
+  font-size: 7rem;
+  color: #242424;
+}
+
+.vertical-title-bottom {
+  font-weight: 400;
+  font-size: 6rem;
+  color: #242424;
+}
+
+.panel-content-vertical .panel-content {
+  text-align: left;
+  max-width: 600px;
+}
+
 .content-panel-container {
   margin-top: 2rem;
   overflow: hidden;
@@ -541,4 +587,137 @@ button:focus-visible {
 .timeline-item.current .timeline-content {
   border-color: #646cff;
   border-width: 2px;
+}
+
+/* Skills Page Styles */
+.skills-quote {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.8rem;
+  font-style: italic;
+  color: #242424;
+  margin-bottom: 0.5rem;
+}
+
+.skills-author {
+  font-size: 1rem;
+  color: #888;
+}
+
+.skills-page {
+  padding: 2rem 0;
+}
+
+.skills-section {
+  margin-bottom: 4rem;
+}
+
+.skills-section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, #cccccc 0%, #000000 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Creative Skills Grid */
+.creative-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.creative-skill-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eee;
+  transition: all 0.3s ease;
+}
+
+.creative-skill-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.skill-image-container {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
+
+.skill-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.creative-skill-card:hover .skill-image {
+  transform: scale(1.05);
+}
+
+.skill-info {
+  padding: 1.5rem;
+}
+
+.skill-info h4 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  color: #242424;
+}
+
+.skill-info p {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0;
+}
+
+/* Programming Skills */
+.programming-skills-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.programming-skill-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.skill-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #242424;
+  min-width: 120px;
+}
+
+.skill-bar {
+  flex: 1;
+  height: 6px;
+  background: #d4d4d4;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.skill-progress {
+  height: 100%;
+  background: linear-gradient(90deg, #646cff, #764ba2);
+  border-radius: 3px;
+  transition: width 0.8s ease;
+}
+
+.skill-percentage {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #646cff;
+  min-width: 40px;
+  text-align: right;
 }
