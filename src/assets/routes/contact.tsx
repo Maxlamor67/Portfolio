@@ -5,7 +5,7 @@ import contactImage from '../images/photo-prise-photo.JPG';
 export function ContactPanel() {
   return (
     <div className="panel-content-image">
-        <img src={contactImage} alt="Contact" className="contact-image" />
+        <img src={contactImage} alt="Contact" className="contact-image" loading="lazy" />
         <div className="panel-content">
         <h2>Contact</h2>
         <p>Une idée ? Un projet ? Discutons-en !</p>

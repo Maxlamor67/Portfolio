@@ -19,7 +19,7 @@ import fantominusImage from '../images/photo-fantominus.png';
 export function ProjectsPanel() {
   return (
     <div className="panel-content-image">
-        <img src={presentationImage} alt="Contact" className="contact-image" />
+        <img src={presentationImage} alt="Contact" className="contact-image" loading="lazy" />
         <div className="panel-content">
         <h2>Mes Projets</h2>
       <p>Découvrez mes différents projets et réalisations.</p>
@@ -113,7 +113,7 @@ export default function Projects() {
       {lightbox && (
         <div className="lightbox-overlay" onClick={() => setLightbox(null)}>
           <button className="lightbox-close" onClick={() => setLightbox(null)}>&times;</button>
-          <img src={lightbox.src} alt={lightbox.alt} className="lightbox-image" onClick={(e) => e.stopPropagation()} />
+          <img src={lightbox.src} alt={lightbox.alt} className="lightbox-image" loading="eager" onClick={(e) => e.stopPropagation()} />
         </div>
       )}
 
@@ -121,13 +121,13 @@ export default function Projects() {
         {/* ligne 1: 2 images */}
         <div className="gallery-row row-h-tall">
           <div className="gallery-img f2">
-            <img src={galleryImages[0].src} alt={galleryImages[0].alt} />
+            <img src={galleryImages[0].src} alt={galleryImages[0].alt} loading="lazy" />
             <button className="gallery-expand" onClick={() => setLightbox(galleryImages[0])}>
               Voir en entier
             </button>
           </div>
           <div className="gallery-img f1">
-            <img src={galleryImages[1].src} alt={galleryImages[1].alt} />
+            <img src={galleryImages[1].src} alt={galleryImages[1].alt} loading="lazy" />
             <button className="gallery-expand" onClick={() => setLightbox(galleryImages[1])}>
               Voir en entier
             </button>
@@ -137,19 +137,19 @@ export default function Projects() {
         {/* ligne 2: 3 images */}
         <div className="gallery-row row-h-short">
           <div className="gallery-img f1">
-            <img src={galleryImages[2].src} alt={galleryImages[2].alt} />
+            <img src={galleryImages[2].src} alt={galleryImages[2].alt} loading="lazy" />
             <button className="gallery-expand" onClick={() => setLightbox(galleryImages[2])}>
               Voir en entier
             </button>
           </div>
           <div className="gallery-img f1">
-            <img src={galleryImages[3].src} alt={galleryImages[3].alt} />
+            <img src={galleryImages[3].src} alt={galleryImages[3].alt} loading="lazy" />
             <button className="gallery-expand" onClick={() => setLightbox(galleryImages[3])}>
               Voir en entier
             </button>
           </div>
           <div className="gallery-img f1">
-            <img src={galleryImages[4].src} alt={galleryImages[4].alt} />
+            <img src={galleryImages[4].src} alt={galleryImages[4].alt} loading="lazy" />
             <button className="gallery-expand" onClick={() => setLightbox(galleryImages[4])}>
               Voir en entier
             </button>
@@ -159,13 +159,13 @@ export default function Projects() {
         {/* ligne 3: 2 images */}
         <div className="gallery-row row-h-mid">
           <div className="gallery-img f1">
-            <img src={galleryImages[5].src} alt={galleryImages[5].alt} />
+            <img src={galleryImages[5].src} alt={galleryImages[5].alt} loading="lazy" />
             <button className="gallery-expand" onClick={() => setLightbox(galleryImages[5])}>
               Voir en entier
             </button>
           </div>
           <div className="gallery-img f2">
-            <img src={galleryImages[6].src} alt={galleryImages[6].alt} />
+            <img src={galleryImages[6].src} alt={galleryImages[6].alt} loading="lazy" />
             <button className="gallery-expand" onClick={() => setLightbox(galleryImages[6])}>
               Voir en entier
             </button>
@@ -175,19 +175,19 @@ export default function Projects() {
         {/* ligne 4: 3 images */}
         <div className="gallery-row row-h-tall">
           <div className="gallery-img f1">
-            <img src={galleryImages[7].src} alt={galleryImages[7].alt} />
+            <img src={galleryImages[7].src} alt={galleryImages[7].alt} loading="lazy" />
             <button className="gallery-expand" onClick={() => setLightbox(galleryImages[7])}>
               Voir en entier
             </button>
           </div>
           <div className="gallery-img f1">
-            <img src={galleryImages[8].src} alt={galleryImages[8].alt} />
+            <img src={galleryImages[8].src} alt={galleryImages[8].alt} loading="lazy" />
             <button className="gallery-expand" onClick={() => setLightbox(galleryImages[8])}>
               Voir en entier
             </button>
           </div>
           <div className="gallery-img f1">
-            <img src={galleryImages[9].src} alt={galleryImages[9].alt} />
+            <img src={galleryImages[9].src} alt={galleryImages[9].alt} loading="lazy" />
             <button className="gallery-expand" onClick={() => setLightbox(galleryImages[9])}>
               Voir en entier
             </button>

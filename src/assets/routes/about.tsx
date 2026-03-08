@@ -19,7 +19,7 @@ export function AboutPanel() {
             pour donner vie à des projets qui ont du sens.
           </p>
         </div>
-        <img src={aboutImage} alt="Maxime Lamorlette" className="about-image" />
+        <img src={aboutImage} alt="Maxime Lamorlette" className="about-image" loading="lazy" />
     </div>
   );
 }

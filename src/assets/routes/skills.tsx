@@ -51,7 +51,7 @@ export default function Skills() {
             <div key={skill.name} className="creative-skill-card">
               {skill.image && (
                 <div className="skill-image-container">
-                  <img src={skill.image} alt={skill.name} className={`skill-image ${skill.imageClass || ''}`} />
+                  <img src={skill.image} alt={skill.name} className={`skill-image ${skill.imageClass || ''}`} loading="lazy" />
                 </div>
               )}
               <div className="skill-info">
