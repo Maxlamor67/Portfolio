@@ -11,7 +11,7 @@ export function AboutPanel() {
             Je suis un développeur français passionné par le monde de l'informatique et tout ce qui y touche.
           </p>
           <p>
-            Avec une forte curiosité pour les nouvelles technologies, le designainsi que la mode, 
+            Avec une forte curiosité pour les nouvelles technologies, le design ainsi que la mode, 
             je m'efforce de créer des expériences numériques uniques en rapport avec ma personne.
           </p>
           <p>
