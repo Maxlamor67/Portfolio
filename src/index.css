@@ -13,6 +13,128 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.home-group {
+  text-align: center;
+  width: 100%;
+}
+
+
+.home-title {
+  font-size: 3.2em;
+  line-height: 1.1;
+  margin-top: 5%;
+  margin-bottom: 2%;
+}
+
+.home-description{
+  justify-content: space-between;
+  font-size: 1em;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.nav-link {
+  padding: 0.6em 1.2em;
+  border-radius: 8px;
+  background-color: #1a1a1a;
+  border: 1px solid transparent;
+  transition: border-color 0.25s, background-color 0.25s;
+}
+
+.nav-link:hover {
+  border-color: #646cff;
+}
+
+.nav-link.active {
+  background-color: #646cff;
+  color: white;
+}
+
+.page-content {
+  text-align: left;
+}
+
+.page-content h2 {
+  margin-top: 0;
+}
+
+.page-section {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.panel-content h2 {
+  margin-top: 0;
+}
+
+.content-panel-container {
+  margin-top: 2rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.content-panel {
+  padding: 1.5rem;
+  background-color: #333;
+  border-radius: 8px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Slide animations */
+@keyframes slideOutLeft {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-out-left {
+  animation: slideOutLeft 0.3s ease-in-out forwards;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.3s ease-in-out forwards;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+}
+
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -20,14 +142,6 @@ a {
 }
 a:hover {
   color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 h1 {
