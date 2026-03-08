@@ -2,6 +2,7 @@
 import '../css/projects.css';
 import presentationImage from '../images/photo-itachi.JPG';
 
+
 // Gallery images
 import rayquazaImage from '../images/photo-dessin-rayquaza.JPG';
 import chequeInstaImage from '../images/photo-cheque-insta.jpg';
