@@ -1,19 +1,19 @@
 ﻿import { useState } from 'react';
 import '../css/projects.css';
-import presentationImage from '../images/photo-itachi.JPG';
+import presentationImage from '../images/photo-itachi.webp';
 
 
 // Gallery images
-import rayquazaImage from '../images/photo-dessin-rayquaza.JPG';
-import chequeInstaImage from '../images/photo-cheque-insta.jpg';
-import candyImage from '../images/photo-candy.jpg';
-import berserkImage from '../images/photo-berserk.jpg';
-import astroworldImage from '../images/photo-astroworld.JPG';
-import aileImage from '../images/photo-aile.JPG';
-import hollowImage from '../images/photo-hollow-bleu.JPEG';
-import sonicImage from '../images/photo-sonic.jpg';
-import requinImage from '../images/photo-requin.JPEG';
-import fantominusImage from '../images/photo-fantominus.png';
+import rayquazaImage from '../images/photo-dessin-rayquaza.webp';
+import chequeInstaImage from '../images/photo-cheque-insta.webp';
+import candyImage from '../images/photo-candy.webp';
+import berserkImage from '../images/photo-berserk.webp';
+import astroworldImage from '../images/photo-astroworld.webp';
+import aileImage from '../images/photo-aile.webp';
+import hollowImage from '../images/photo-hollow-bleu.webp';
+import sonicImage from '../images/photo-sonic.webp';
+import requinImage from '../images/photo-requin.webp';
+import fantominusImage from '../images/photo-fantominus.webp';
 
 // Contenu du panel animé
 export function ProjectsPanel() {

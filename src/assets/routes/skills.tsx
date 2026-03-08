@@ -1,9 +1,9 @@
 import '../css/skills.css';
-import photoshopImage from '../images/photo-photoshop.png';
-import pocketImage from '../images/photo-pocket.PNG';
-import filmoraImage from '../images/photo-filmora.jpg';
-import unityImage from '../images/photo-unity.png';
-import aseppriteImage from '../images/photo-aseprite.png';
+import photoshopImage from '../images/photo-photoshop.webp';
+import pocketImage from '../images/photo-pocket.webp';
+import filmoraImage from '../images/photo-filmora.webp';
+import unityImage from '../images/photo-unity.webp';
+import aseppriteImage from '../images/photo-aseprite.webp';
 
 // Contenu du panel animé
 export function SkillsPanel() {

@@ -1,5 +1,5 @@
 import '../css/about.css';
-import aboutImage from '../images/photo-error.JPG';
+import aboutImage from '../images/photo-error.webp';
 
 // Contenu du panel animé
 export function AboutPanel() {

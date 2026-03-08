@@ -1,5 +1,5 @@
 import '../css/contact.css';
-import contactImage from '../images/photo-prise-photo.JPG';
+import contactImage from '../images/photo-prise-photo.webp';
 
 // Contenu du panel animé
 export function ContactPanel() {
