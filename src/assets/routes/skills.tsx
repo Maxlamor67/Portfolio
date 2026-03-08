@@ -1,6 +1,6 @@
 import '../css/skills.css';
 import photoshopImage from '../images/photo-photoshop.png';
-import pocketImage from '../images/photo-pocket.png';
+import pocketImage from '../images/photo-pocket.PNG';
 import filmoraImage from '../images/photo-filmora.jpg';
 import unityImage from '../images/photo-unity.png';
 import aseppriteImage from '../images/photo-aseprite.png';
