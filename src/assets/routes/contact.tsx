@@ -1,3 +1,4 @@
+import '../css/contact.css';
 import contactImage from '../images/photo-prise-photo.JPG';
 
 // Contenu du panel animé

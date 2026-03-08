@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import '../css/layout.css';
 import Projects, { ProjectsPanel } from './projects';
 import About, { AboutPanel } from './about';
 import Skills, { SkillsPanel } from './skills';

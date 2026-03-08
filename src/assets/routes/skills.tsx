@@ -1,3 +1,4 @@
+import '../css/skills.css';
 import photoshopImage from '../images/photo-photoshop.png';
 import pocketImage from '../images/photo-pocket.png';
 import filmoraImage from '../images/photo-filmora.jpg';
