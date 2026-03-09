@@ -27,7 +27,7 @@
   padding: 0.6em 1.2em;
   border-radius: 8px;
   color: #242424;
-  background-color: #e9e9e9;
+  background-color: var(--bg-nav, #e9e9e9);
   border: 1px solid transparent;
   transition: border-color 0.25s, background-color 0.25s;
 }
@@ -52,7 +52,7 @@
 .page-section {
   margin-top: 0.5rem;
   padding: 1.5rem;
-  background-color: #e9e9e9;
+  background-color: var(--bg-panel, #e9e9e9);
   border-radius: 8px;
   text-align: left;
 }
@@ -69,6 +69,8 @@
   gap: 6rem;
   width: 100%;
   height: 100%;
+  padding: 0 2rem;
+  box-sizing: border-box;
 }
 
 .panel-content-image .panel-content {
@@ -115,7 +117,8 @@
   gap: 3rem;
   width: 100%;
   height: 100%;
-  padding-left: 2rem;
+  padding: 0 2rem;
+  box-sizing: border-box;
 }
 
 .vertical-title {
@@ -163,7 +166,7 @@
 
 .content-panel {
   padding: 1.5rem;
-  background-color: #e9e9e9;
+  background-color: var(--bg-panel, #e9e9e9);
   border-radius: 8px;
   width: 100%;
   margin-left: auto;
@@ -207,4 +210,173 @@
 
 .slide-in-right {
   animation: slideInRight 0.3s ease-in-out forwards;
+}
+
+/*                        */
+/* Responsive layout      */
+/*                        */
+
+@media (max-width: 1024px) {
+  .panel-content-image {
+    gap: 3rem;
+  }
+
+  .contact-image {
+    width: 350px;
+    height: 430px;
+  }
+
+  .panel-content-image .panel-content h2 {
+    font-size: 3rem;
+  }
+
+  .panel-content-image .panel-content p {
+    font-size: 1.2rem;
+  }
+
+  .vertical-title-top {
+    font-size: 5rem;
+  }
+
+  .vertical-title-bottom {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-title {
+    font-size: 2.2em;
+  }
+
+  .button-group {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .nav-link {
+    padding: 0.5em 0.9em;
+    font-size: 0.9rem;
+  }
+
+  .content-panel-container {
+    min-height: auto;
+  }
+
+  .content-panel {
+    padding: 1rem;
+  }
+
+  .panel-content-image {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .panel-content-image .panel-content {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .panel-content-image .panel-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .panel-content-image .panel-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .contact-image {
+    width: 100%;
+    max-width: 350px;
+    height: 400px;
+  }
+
+  .panel-content h2 {
+    font-size: 2rem;
+  }
+
+  .panel-content p {
+    font-size: 1rem;
+  }
+
+  .panel-content-vertical {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-left: 0;
+    padding: 1rem;
+  }
+
+  .vertical-title {
+    writing-mode: horizontal-tb;
+    text-orientation: initial;
+    transform: none;
+    text-align: center;
+  }
+
+  .vertical-title-top {
+    font-size: 3rem;
+  }
+
+  .vertical-title-bottom {
+    font-size: 2.5rem;
+  }
+
+  .panel-content-vertical .panel-content {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .page-section {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-title {
+    font-size: 1.6em;
+  }
+
+  .button-group {
+    gap: 0.4rem;
+    margin-top: 1rem;
+  }
+
+  .nav-link {
+    padding: 0.4em 0.7em;
+    font-size: 0.8rem;
+  }
+
+  .panel-content-image .panel-content h2 {
+    font-size: 2rem;
+  }
+
+  .panel-content-image .panel-content p {
+    font-size: 1rem;
+  }
+
+  .contact-image {
+    max-width: 280px;
+    height: 320px;
+  }
+
+  .panel-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .vertical-title-top {
+    font-size: 2.2rem;
+  }
+
+  .vertical-title-bottom {
+    font-size: 1.8rem;
+  }
+
+  .content-panel {
+    padding: 0.75rem;
+  }
+
+  .page-section {
+    padding: 0.75rem;
+  }
 }

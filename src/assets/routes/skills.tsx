@@ -32,14 +32,14 @@ export default function Skills() {
   ];
 
   const programmingSkills = [
-    { name: 'C#', level: 85 },
-    { name: 'SQL', level: 85 },
-    { name: 'Java', level: 55 },
-    { name: 'React', level: 50 },
-    { name: 'Python', level: 55 },
-    { name: 'C', level: 60 },
-    { name: 'HTML / CSS', level: 65 },
-    { name: 'WinDev', level: 45 }
+    { name: 'C#', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg', doc: 'https://learn.microsoft.com/dotnet/csharp/' },
+    { name: 'SQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg', doc: 'https://dev.mysql.com/doc/' },
+    { name: 'Java', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg', doc: 'https://docs.oracle.com/en/java/' },
+    { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg', doc: 'https://react.dev/' },
+    { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg', doc: 'https://docs.python.org/3/' },
+    { name: 'C', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg', doc: 'https://en.cppreference.com/w/c' },
+    { name: 'HTML / CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg', doc: 'https://developer.mozilla.org/docs/Web/HTML' },
+    { name: 'WinDev', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/windows11/windows11-original.svg', doc: 'https://doc.pcsoft.fr/' }
   ];
 
   return (
@@ -67,13 +67,16 @@ export default function Skills() {
         <h3 className="skills-section-title">Programmation</h3>
         <div className="programming-skills-grid">
           {programmingSkills.map((skill) => (
-            <div key={skill.name} className="programming-skill-item">
-              <span className="skill-name">{skill.name}</span>
-              <div className="skill-bar">
-                <div className="skill-progress" style={{ width: `${skill.level}%` }}></div>
-              </div>
-              <span className="skill-percentage">{skill.level}%</span>
-            </div>
+            <a
+              key={skill.name}
+              href={skill.doc}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="programming-skill-card"
+            >
+              <img src={skill.icon} alt={skill.name} className="programming-skill-icon" />
+              <span className="programming-skill-name">{skill.name}</span>
+            </a>
           ))}
         </div>
       </section>

@@ -214,3 +214,81 @@
   border-color: #646cff;
   border-width: 2px;
 }
+
+/*                    */
+/* Responsive about   */
+/*                    */
+
+@media (max-width: 768px) {
+  .about-image {
+    width: 100%;
+    height: 400px;
+  }
+
+  .about-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+  }
+
+  .parcours-title {
+    font-size: 1.8rem;
+  }
+
+  .parcours-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .timeline {
+    padding-left: 45px;
+  }
+
+  .timeline-dot {
+    left: -33px;
+    width: 12px;
+    height: 12px;
+  }
+
+  .timeline-line {
+    left: 15px;
+  }
+
+  .timeline-header h3 {
+    font-size: 1.05rem;
+  }
+
+  .timeline-content {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-image {
+    height: 280px;
+  }
+
+  .about-text h2 {
+    font-size: 2rem;
+  }
+
+  .parcours-title {
+    font-size: 1.5rem;
+  }
+
+  .timeline {
+    padding-left: 40px;
+  }
+
+  .timeline-dot {
+    left: -28px;
+    width: 10px;
+    height: 10px;
+  }
+
+  .timeline-line {
+    left: 14px;
+  }
+}
