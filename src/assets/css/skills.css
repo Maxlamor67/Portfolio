@@ -22,35 +22,6 @@
   gap: 2.25rem;
 }
 
-.skills-hero-copy {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-}
-
-.skills-kicker {
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 0.76rem;
-  font-weight: 700;
-  color: #5b647a;
-}
-
-.skills-hero-title {
-  margin: 0;
-  font-size: clamp(1.7rem, 2.5vw, 2.8rem);
-  line-height: 1.05;
-}
-
-.skills-hero-text {
-  margin: 0;
-  max-width: 62ch;
-  color: #50576b;
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
 .skills-section {
   margin-bottom: 4rem;
 }
@@ -66,10 +37,7 @@
   background-clip: text;
 }
 
-/*                      */
-/* Creative Skills Grid */
-/*                      */
-
+/* ==================== Creative Skills Grid ==================== */
 .creative-skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -172,106 +140,93 @@
   color: #666;
   margin: 0;
 }
-/* */
-/* Programming Orbit — Atom  */
-/* */
 
-/* Correction : On démarre de la position initiale calculée par le JS et on y ajoute 360deg */
-@keyframes orbit-spin {
-  from { transform: rotate(var(--orbit-start)); }
-  to   { transform: rotate(calc(var(--orbit-start) + calc(360deg * var(--orbit-dir, 1)))); }
-}
 
-/* Correction du contre-pivotement : Reste bien droit en fonction de son angle initial */
-@keyframes orbit-counter {
-  from { transform: rotate(calc(-1 * var(--orbit-start))); }
-  to   { transform: rotate(calc(calc(-360deg * var(--orbit-dir, 1)) - var(--orbit-start))); }
-}
-
-@keyframes orbit-pulse-1 {
-  0%, 100% { transform: translate(-50%, -50%) scale(0.97); opacity: 0.35; }
-  50%       { transform: translate(-50%, -50%) scale(1.04); opacity: 0.7; }
-}
-
-@keyframes orbit-pulse-2 {
-  0%, 100% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.2; }
-  50%       { transform: translate(-50%, -50%) scale(1.06); opacity: 0.5; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .programming-orbit-arm,
-  .programming-orbit-chip {
-    animation-play-state: paused !important;
-  }
-}
+/* ========================================================================== */
+/* PROGRAMMING ORBIT — STRUCTURE DE LA SCÈNE                                  */
+/* ========================================================================== */
 
 .programming-showcase {
   position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 850px;
 }
 
 .programming-orbit-stage {
   position: relative;
-  width: min(920px, 100%);
-  aspect-ratio: 1 / 1;
+  width: 820px;
+  height: 820px;
   margin: 0 auto;
-  display: grid;
-  place-items: center;
+  display: block !important;
 }
 
-/* Synchronisation visuelle parfaite des cercles avec les rayons JavaScript */
-.programming-orbit-stage .ring {
+/* Alignement central absolu de référence */
+.programming-orbit-stage .ring,
+.programming-orbit-core,
+.programming-orbit-arm {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  top: 50% !important;
+  left: 50% !important;
+}
+
+/* Masquage des anciens rails */
+.programming-orbit-stage .ring {
+  border: none !important;
+  background: transparent !important;
+}
+.programming-orbit-stage .ring-inner { width: 440px; height: 440px; }
+.programming-orbit-stage .ring-mid   { width: 640px; height: 640px; }
+.programming-orbit-stage .ring-outer { width: 800px; height: 800px; }
+
+
+/* ========================================================================== */
+/* ANNEAUX DE L'ATOME (PERSPECTIVE)                                           */
+/* ========================================================================== */
+
+.programming-orbit-stage .atom-orbit {
+  position: absolute;
+  top: 50% !important;
+  left: 50% !important;
+  transform-origin: center center !important;
+  width: 800px; 
+  height: 800px;
   border-radius: 50%;
   pointer-events: none;
   z-index: 1;
   box-sizing: border-box;
 }
 
-.programming-orbit-stage .ring-inner {
-  width: 320px; /* radius 160px * 2 */
-  height: 320px;
-  border: 1px dashed rgba(114, 128, 255, 0.2);
+.programming-orbit-stage .orbit-1 {
+  transform: translate(-50%, -50%) rotateZ(30deg) scaleY(0.35) !important;
+  border: 1.5px solid rgba(114, 128, 255, 0.3) !important;
 }
 
-.programming-orbit-stage .ring-mid {
-  width: 520px; /* radius 260px * 2 */
-  height: 520px;
-  border: 1px dashed rgba(114, 128, 255, 0.16);
+.programming-orbit-stage .orbit-2 {
+  transform: translate(-50%, -50%) rotateZ(90deg) scaleY(0.35) !important;
+  border: 1.5px solid rgba(114, 128, 255, 0.22) !important;
 }
 
-.programming-orbit-stage .ring-outer {
-  width: 740px; /* radius 370px * 2 */
-  height: 740px;
-  border: 1px dashed rgba(80, 199, 255, 0.12);
+.programming-orbit-stage .orbit-3 {
+  transform: translate(-50%, -50%) rotateZ(150deg) scaleY(0.35) !important;
+  border: 1.5px solid rgba(80, 199, 255, 0.25) !important;
 }
+
+
+/* ========================================================================== */
+/* NOYAU CENTRAL                                                              */
+/* ========================================================================== */
 
 .programming-orbit-core::before,
 .programming-orbit-core::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
+  display: none !important; 
 }
 
-.programming-orbit-core::before {
-  inset: -50px;
-  border: 0.5px solid rgba(114, 128, 255, 0.18);
-  animation: orbit-pulse-1 5s ease-in-out infinite;
-}
-
-.programming-orbit-core::after {
-  inset: -20px;
-  border: 0.5px solid rgba(114, 128, 255, 0.22);
-  animation: orbit-pulse-2 7s ease-in-out infinite;
-}
-
-/* Nucleus */
 .programming-orbit-core {
-  position: relative;
-  z-index: 2;
+  transform: translate(-50%, -50%) !important;
+  z-index: 5;
   width: 160px;
   height: 160px;
   display: flex;
@@ -302,40 +257,54 @@
   word-break: break-word;
 }
 
-/* Orbit arms */
+
+/* ========================================================================== */
+/* BRAS DE ROTATION PHYSIQUE (PIVOTS DE ROTATION)                             */
+/* ========================================================================== */
+
 .programming-orbit-arm {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  transform-origin: 0 0;
-  z-index: 3;
+  width: 0px !important;
+  height: 0px !important;
+  transform-origin: 0 0 !important;
+  
+  /* Applique la répartition angulaire d'origine de chaque élément au chargement */
+  transform: translate(-50%, -50%) rotate(var(--orbit-start)) !important;
+  
+  /* Lancement de la rotation principale */
   animation: orbit-spin var(--orbit-dur) linear infinite;
+  animation-delay: var(--orbit-delay, 0s);
+  z-index: 3;
   pointer-events: none;
 }
 
-/* Chips */
+/* Badges de langages */
 .programming-orbit-chip {
   position: absolute;
   display: flex;
   align-items: center;
   gap: 8px;
-  /* Utilisation du rayon dynamique pour placer l'élément pile sur sa ligne */
-  transform: translateX(var(--orbit-radius)) translateY(-50%);
+  
+  /* RECENTRAGE DE BASE : On annule le déportement top/left pour que le bras reste le centre */
+  top: 0 !important;
+  left: 0 !important;
+  
+  /* LE DÉPORT ET L'ORIENTATION INITIALE : Pousse le badge à sa bonne distance 
+     et neutralise la rotation de départ pour garder le texte droit */
+  transform: translate(-50%, -50%) translateX(var(--orbit-radius)) rotate(calc(-1 * var(--orbit-start))) !important;
+  
   text-decoration: none;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   padding: 6px 12px;
   border-radius: 20px;
-  border: 1px solid rgba(114, 128, 255, 0.15);
-  backdrop-filter: blur(4px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(114, 128, 255, 0.2);
   color: #242424;
   pointer-events: all;
-  animation: orbit-counter var(--counter-dur) linear infinite;
   white-space: nowrap;
-  transition: all 0.2s ease;
-  z-index: 4;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  
+  /* CONTRE-ANIMATION : On utilise var(--orbit-dur) et var(--orbit-delay) pour correspondre au parent */
+  animation: orbit-counter var(--orbit-dur) linear infinite;
+  animation-delay: var(--orbit-delay, 0s);
 }
 
 .programming-orbit-chip:hover {
@@ -362,7 +331,35 @@
   color: #333;
 }
 
-/* Responsive (Mobile Grid fallback) */
+
+/* ========================================================================== */
+/* ANIMATIONS DES ROTATIONS CORRIGÉES MATRICIELLES                            */
+/* ========================================================================== */
+
+@keyframes orbit-spin {
+  from { 
+    transform: translate(-50%, -50%) rotate(var(--orbit-start)) !important; 
+  }
+  to { 
+    transform: translate(-50%, -50%) rotate(calc(var(--orbit-start) + calc(360deg * var(--orbit-dir, 1)))) !important; 
+  }
+}
+
+@keyframes orbit-counter {
+  /* Le rayon translateX() doit être présent dans le Keyframe pour maintenir l'élément sur son orbite */
+  from { 
+    transform: translate(-50%, -50%) translateX(var(--orbit-radius)) rotate(calc(-1 * var(--orbit-start))) !important; 
+  }
+  to { 
+    transform: translate(-50%, -50%) translateX(var(--orbit-radius)) rotate(calc(calc(-360deg * var(--orbit-dir, 1)) - var(--orbit-start))) !important; 
+  }
+}
+
+
+/* ========================================================================== */
+/* RESPONSIVE SKILLS (FALLBACK GRILLE MOBILE)                                 */
+/* ========================================================================== */
+
 @media (max-width: 768px) {
   .skills-quote {
     font-size: 1.3rem;
@@ -381,35 +378,44 @@
     padding: 1.5rem 0;
     place-items: unset;
     align-items: start;
+    width: 100%;
+    height: auto;
   }
 
   .programming-orbit-arm {
-    position: static;
+    position: static !important;
     animation: none;
-    width: auto;
-    height: auto;
-    transform: none;
+    width: auto !important;
+    height: auto !important;
+    transform: none !important;
     pointer-events: all;
   }
 
   .programming-orbit-chip {
-    position: static;
-    transform: none;
+    position: static !important;
+    transform: none !important;
     animation: none;
     width: 100%;
     justify-content: flex-start;
     box-sizing: border-box;
+    left: auto !important;
+    top: auto !important;
   }
 
   .programming-orbit-core {
+    position: relative !important;
+    transform: none !important;
     grid-column: 1 / -1;
     margin: 0 auto 1rem;
+    top: 0 !important;
+    left: 0 !important;
   }
 
   .programming-orbit-stage .ring,
+  .programming-orbit-stage .atom-orbit,
   .programming-orbit-core::before,
   .programming-orbit-core::after {
-    display: none;
+    display: none !important;
   }
 }
 
