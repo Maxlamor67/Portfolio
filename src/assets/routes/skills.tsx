@@ -1,11 +1,36 @@
 import type { CSSProperties } from 'react';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import '../css/skills.css';
 import photoshopImage from '../images/photo-photoshop.webp';
 import pocketImage from '../images/photo-pocket.webp';
 import filmoraImage from '../images/photo-filmora.webp';
 import unityImage from '../images/photo-unity.webp';
 import asepriteImage from '../images/photo-aseprite.webp';
+import blenderImage from '../images/photo-blender.png';
+
+const programmingSkills = [
+  { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg', doc: 'https://www.typescriptlang.org/docs/', ring: 0 },
+  { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg', doc: 'https://developer.mozilla.org/docs/Web/JavaScript', ring: 0 },
+  { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg', doc: 'https://react.dev/', ring: 0 },
+  { name: 'NestJS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg', doc: 'https://docs.nestjs.com/', ring: 0 },
+  { name: 'Prisma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg', doc: 'https://www.prisma.io/docs', ring: 1 },
+  { name: 'Android', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/android/android-original.svg', doc: 'https://developer.android.com/docs', ring: 1 },
+  { name: 'Laravel', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg', doc: 'https://laravel.com/docs', ring: 1 },
+  { name: 'PHP', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg', doc: 'https://www.php.net/docs.php', ring: 1 },
+  { name: 'SQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg', doc: 'https://dev.mysql.com/doc/', ring: 1 },
+  { name: 'C', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg', doc: 'https://en.cppreference.com/w/c', ring: 2 },
+  { name: 'Java', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg', doc: 'https://docs.oracle.com/en/java/', ring: 2 },
+  { name: 'C#', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg', doc: 'https://learn.microsoft.com/dotnet/csharp/', ring: 2 },
+  { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg', doc: 'https://docs.python.org/3/', ring: 2 },
+  { name: 'HTML / CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg', doc: 'https://developer.mozilla.org/docs/Web/HTML', ring: 2 },
+  { name: 'WinDev', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/windows11/windows11-original.svg', doc: 'https://doc.pcsoft.fr/', ring: 2 },
+];
+
+const rings = [
+  { radius: 180, duration: 25, direction: 'normal' },
+  { radius: 270, duration: 35, direction: 'reverse' },
+  { radius: 360, duration: 45, direction: 'normal' },
+];
 
 // Contenu du panel animé
 export function SkillsPanel() {
@@ -24,40 +49,25 @@ export function SkillsPanel() {
 }
 
 export default function Skills() {
-  const visualSkills = [
+  type VisualSkill = {
+    name: string;
+    description: string;
+    image: string;
+    imageClass?: string;
+    cardClass?: string;
+    containerClass?: string;
+  };
+
+  const visualSkills: VisualSkill[] = [
     { name: 'Photoshop', description: 'Retouche, montage et composition visuelle', image: photoshopImage, imageClass: '' },
     { name: 'Filmora', description: 'Montage vidéo rapide et habillage', image: filmoraImage, imageClass: '' },
     { name: 'Pocket', description: 'Croquis, illustration et dessin numérique', image: pocketImage, imageClass: 'skill-image-pocket' },
     { name: 'Unity', description: 'Prototypage et expériences interactives', image: unityImage, imageClass: '' },
     { name: 'Aseprite', description: 'Sprites et animation 2D', image: asepriteImage, imageClass: 'skill-image-pocket' },
-    { name: 'Blender', description: "Modélisation 3D et rendu d'objets", image: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/blender/blender-original.svg', imageClass: 'skill-image-blender', cardClass: 'creative-skill-card-blender', containerClass: 'skill-image-container-blender', isExternalUrl: true }
+    { name: 'Blender', description: "Modélisation 3D et rendu d'objets", image: blenderImage, imageClass: 'skill-image-blender'}
   ];
 
-  const programmingSkills = [
-    { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg', doc: 'https://www.typescriptlang.org/docs/', ring: 0 },
-    { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg', doc: 'https://developer.mozilla.org/docs/Web/JavaScript', ring: 0 },
-    { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg', doc: 'https://react.dev/', ring: 0 },
-    { name: 'NestJS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg', doc: 'https://docs.nestjs.com/', ring: 0 },
-    { name: 'Prisma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg', doc: 'https://www.prisma.io/docs', ring: 1 },
-    { name: 'Android', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/android/android-original.svg', doc: 'https://developer.android.com/docs', ring: 1 },
-    { name: 'Laravel', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg', doc: 'https://laravel.com/docs', ring: 1 },
-    { name: 'PHP', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg', doc: 'https://www.php.net/docs.php', ring: 1 },
-    { name: 'SQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg', doc: 'https://dev.mysql.com/doc/', ring: 1 },
-    { name: 'C', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg', doc: 'https://en.cppreference.com/w/c', ring: 2 },
-    { name: 'Java', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg', doc: 'https://docs.oracle.com/en/java/', ring: 2 },
-    { name: 'C#', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg', doc: 'https://learn.microsoft.com/dotnet/csharp/', ring: 2 },
-    { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg', doc: 'https://docs.python.org/3/', ring: 2 },
-    { name: 'HTML / CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg', doc: 'https://developer.mozilla.org/docs/Web/HTML', ring: 2 },
-    { name: 'WinDev', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/windows11/windows11-original.svg', doc: 'https://doc.pcsoft.fr/', ring: 2 },
-  ];
-
-  const rings = [
-    { radius: 180, duration: 25, direction: 'normal' },
-    { radius: 270, duration: 35, direction: 'reverse' },
-    { radius: 360, duration: 45, direction: 'normal' },
-  ];
-
-  const byRing = [0, 1, 2].map(r => programmingSkills.filter(s => s.ring === r));
+  const byRing = useMemo(() => [0, 1, 2].map(r => programmingSkills.filter(s => s.ring === r)), []);
 
   useEffect(() => {
     let startTime: number | null = null;
@@ -89,7 +99,7 @@ export default function Skills() {
 
     raf = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(raf);
-  }, []);
+  }, [byRing]);
 
   return (
     <div className="skills-page skills-page-modern">
