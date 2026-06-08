@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { Navigate, NavLink, useLocation, useNavigate, useNavigationType } from 'react-router-dom';
 import '../css/layout.css';
 import Projects, { ProjectsPanel } from './projects';
 import About, { AboutPanel } from './about';
@@ -48,7 +48,9 @@ const seoMeta: Record<string, { title: string; description: string }> = {
 export default function Layout() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [displayedPath, setDisplayedPath] = useState<string>(location.pathname);
+  const navigationType = useNavigationType();
+  const initialDisplayedPath = navigationType === 'POP' && location.pathname !== '/' ? '/' : location.pathname;
+  const [displayedPath, setDisplayedPath] = useState<string>(initialDisplayedPath);
   const [isAnimating, setIsAnimating] = useState(false);
   const [slideDirection, setSlideDirection] = useState<'in' | 'out' | null>(null);
   const timeoutRef = useRef<number | null>(null);
@@ -95,6 +97,10 @@ export default function Layout() {
       canonicalTag.setAttribute('href', `https://maxime-lamorlette.vercel.app${pathname}`);
     }
   }, [location.pathname]);
+
+  if (navigationType === 'POP' && location.pathname !== '/') {
+    return <Navigate to="/" replace />;
+  }
 
   return (
     <div className="home-group">
