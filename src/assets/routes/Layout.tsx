@@ -1,5 +1,5 @@
-import { useState, useRef, useCallback } from 'react';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { useState, useRef, useCallback, useEffect } from 'react';
+import { Navigate, NavLink, useLocation, useNavigate, useNavigationType } from 'react-router-dom';
 import '../css/layout.css';
 import Projects, { ProjectsPanel } from './projects';
 import About, { AboutPanel } from './about';
@@ -22,10 +22,35 @@ const pageComponents: Record<string, React.ComponentType> = {
   '/contact': Contact,
 };
 
+const seoMeta: Record<string, { title: string; description: string }> = {
+  '/': {
+    title: 'Maxime Lamorlette | Portfolio Developpeur Web',
+    description: 'Portfolio de Maxime Lamorlette: projets, competences et contact.',
+  },
+  '/projects': {
+    title: 'Projets | Maxime Lamorlette',
+    description: 'Decouvrez les projets web realises par Maxime Lamorlette.',
+  },
+  '/about': {
+    title: 'A Propos | Maxime Lamorlette',
+    description: 'Presentation de Maxime Lamorlette, developpeur web.',
+  },
+  '/skills': {
+    title: 'Competences | Maxime Lamorlette',
+    description: 'Les competences techniques de Maxime Lamorlette en developpement web.',
+  },
+  '/contact': {
+    title: 'Contact | Maxime Lamorlette',
+    description: 'Contactez Maxime Lamorlette pour vos opportunites et projets.',
+  },
+};
+
 export default function Layout() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [displayedPath, setDisplayedPath] = useState<string>(location.pathname);
+  const navigationType = useNavigationType();
+  const initialDisplayedPath = navigationType === 'POP' && location.pathname !== '/' ? '/' : location.pathname;
+  const [displayedPath, setDisplayedPath] = useState<string>(initialDisplayedPath);
   const [isAnimating, setIsAnimating] = useState(false);
   const [slideDirection, setSlideDirection] = useState<'in' | 'out' | null>(null);
   const timeoutRef = useRef<number | null>(null);
@@ -56,6 +81,26 @@ export default function Layout() {
 
   const CurrentPanel = panelComponents[displayedPath] || ProjectsPanel;
   const CurrentPage = pageComponents[displayedPath] || Projects;
+
+  useEffect(() => {
+    const currentMeta = seoMeta[location.pathname] || seoMeta['/'];
+    document.title = currentMeta.title;
+
+    const descriptionTag = document.querySelector('meta[name="description"]');
+    if (descriptionTag) {
+      descriptionTag.setAttribute('content', currentMeta.description);
+    }
+
+    const canonicalTag = document.querySelector('link[rel="canonical"]');
+    if (canonicalTag) {
+      const pathname = location.pathname === '/' ? '' : location.pathname;
+      canonicalTag.setAttribute('href', `https://maxime-lamorlette.vercel.app${pathname}`);
+    }
+  }, [location.pathname]);
+
+  if (navigationType === 'POP' && location.pathname !== '/') {
+    return <Navigate to="/" replace />;
+  }
 
   return (
     <div className="home-group">

@@ -16,6 +16,12 @@
   padding: 2rem 0;
 }
 
+.skills-page-modern {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+}
+
 .skills-section {
   margin-bottom: 4rem;
 }
@@ -25,20 +31,48 @@
   font-weight: 700;
   margin-bottom: 2rem;
   text-align: center;
-  background: linear-gradient(135deg, #cccccc 0%, #000000 100%);
+  background: linear-gradient(135deg, #7280ff 0%, #1b2559 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/*                      */
-/* Creative Skills Grid */
-/*                      */
-
+/* ==================== grille ==================== */
 .creative-skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
+}
+
+.creative-skills-grid-modern {
+  gap: 1rem;
+}
+
+.creative-skills-grid-full {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.creative-skill-card-blender {
+  aspect-ratio: 1 / 1;
+}
+
+.skill-image-container-blender {
+  flex: 1;
+  height: auto;
+  min-height: 0;
+}
+
+.creative-skill-card-blender .skill-info {
+  padding-top: 1rem;
+}
+
+.creative-skill-card-blender .skill-info h4 {
+  margin-bottom: 0.35rem;
+}
+
+.creative-skill-card-blender .skill-image {
+  object-fit: contain;
+  background: linear-gradient(180deg, #f5f7ff 0%, #eef1ff 100%);
 }
 
 .creative-skill-card {
@@ -53,6 +87,24 @@
 .creative-skill-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.creative-skill-card-modern {
+  position: relative;
+  background: linear-gradient(180deg, #ffffff 0%, #f8f8fb 100%);
+  border: 1px solid rgba(100, 108, 255, 0.1);
+}
+
+.creative-skill-card-modern::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(100, 108, 255, 0.08), transparent 35%);
+  pointer-events: none;
+}
+
+.skill-image-container-modern {
+  height: 200px;
 }
 
 .skill-image-container {
@@ -89,103 +141,230 @@
   margin: 0;
 }
 
-/*                    */
-/* Programming Skills */
-/*                    */
 
-.programming-skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 1.5rem;
-  max-width: 700px;
-  margin: 0 auto;
+/* ========================================================================== */
+/* PROGRAMMING ORBIT — STRUCTURE DE LA SCÈNE                                  */
+/* ========================================================================== */
+
+.programming-showcase {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 850px;
 }
 
-.programming-skill-card {
+.programming-orbit-stage {
+  position: relative;
+  width: 820px;
+  height: 820px;
+  margin: 0 auto;
+  display: block !important;
+}
+
+/* Base de centrage absolu obligatoire */
+.programming-orbit-stage .ring,
+.programming-orbit-core,
+.programming-orbit-arm {
+  position: absolute;
+  top: 50% !important;
+  left: 50% !important;
+}
+
+.programming-orbit-stage .ring {
+  display: none !important;
+}
+
+
+/* ========================================================================== */
+/* ANNEAUX DE L'ATOME (ELLIPSES DE FOND)                                      */
+/* ========================================================================== */
+
+.programming-orbit-stage .atom-orbit {
+  position: absolute;
+  top: 50% !important;
+  left: 50% !important;
+  transform-origin: center center !important;
+  width: 800px; 
+  height: 800px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+.programming-orbit-stage .orbit-1 {
+  transform: translate(-50%, -50%) rotateZ(30deg) scaleY(0.4) !important;
+  border: 1.5px solid rgba(114, 128, 255, 0.25) !important;
+}
+
+.programming-orbit-stage .orbit-2 {
+  transform: translate(-50%, -50%) rotateZ(90deg) scaleY(0.4) !important;
+  border: 1.5px solid rgba(114, 128, 255, 0.2) !important;
+}
+
+.programming-orbit-stage .orbit-3 {
+  transform: translate(-50%, -50%) rotateZ(150deg) scaleY(0.4) !important;
+  border: 1.5px solid rgba(80, 199, 255, 0.22) !important;
+}
+
+
+/* ========================================================================== */
+/* NOYAU CENTRAL                                                              */
+/* ========================================================================== */
+
+.programming-orbit-core::before,
+.programming-orbit-core::after {
+  display: none !important; 
+}
+
+.programming-orbit-core {
+  transform: translate(-50%, -50%) !important;
+  z-index: 5;
+  width: 160px;
+  height: 160px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  gap: 0.75rem;
-  padding: 1.5rem 1rem;
-  background: #fff;
-  border-radius: 16px;
-  text-decoration: none;
-  color: #242424;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  border: 1px solid #eee;
-  transition: all 0.3s ease;
+  align-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #18203a 0%, #2f3c78 60%, #7280ff 100%);
+  color: #fff;
+  box-shadow: 0 18px 38px rgba(47, 60, 120, 0.26);
+  padding: 0.5rem;
 }
 
-.programming-skill-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-  border-color: #646cff;
+.programming-orbit-core span {
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.9;
+  text-align: center;
+}
+
+.programming-orbit-core strong {
+  margin-top: 0.05rem;
+  font-size: 1.4rem;
+  line-height: 1.05;
+  text-align: center;
+  max-width: 86%;
+  word-break: break-word;
+}
+
+
+/* ========================================================================== */
+/* BRAS ET BADGES (LOGIQUE DE ROTATION FLUIDE)                                */
+/* ========================================================================== */
+
+.programming-orbit-arm {
+  width: 0px !important;
+  height: 0px !important;
+  transform-origin: center center !important;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.programming-orbit-chip {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(114, 128, 255, 0.2);
+  color: #242424;
+  pointer-events: all;
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.programming-orbit-chip:hover {
+  background: #ffffff;
+  box-shadow: 0 6px 15px rgba(114, 128, 255, 0.2);
+  border-color: rgba(114, 128, 255, 0.4);
+  z-index: 10;
+}
+
+.programming-orbit-chip:hover .programming-skill-icon {
+  transform: scale(1.1);
 }
 
 .programming-skill-icon {
-  width: 48px;
-  height: 48px;
-  transition: transform 0.3s ease;
+  width: 24px;
+  height: 24px;
+  display: block;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
 }
 
-.programming-skill-card:hover .programming-skill-icon {
-  transform: scale(1.15);
-}
-
-.programming-skill-name {
-  font-size: 0.9rem;
+.programming-orbit-chip-name {
+  font-size: 0.8rem;
   font-weight: 600;
+  color: #333;
 }
 
-/*                    */
-/* Responsive skills  */
-/*                    */
+
+/* ========================================================================== */
+/* RESPONSIVE SKILLS (FALLBACK GRILLE MOBILE)                                 */
+/* ========================================================================== */
 
 @media (max-width: 768px) {
-  .skills-quote {
-    font-size: 1.3rem;
+  .skills-quote { font-size: 1.3rem; }
+  .skills-section-title { font-size: 1.8rem; }
+
+  .programming-orbit-stage {
+    aspect-ratio: unset;
+    min-height: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+    padding: 1.5rem 0;
+    place-items: unset;
+    align-items: start;
+    width: 100%;
+    height: auto;
   }
 
-  .skills-section-title {
-    font-size: 1.8rem;
+  .programming-orbit-arm {
+    position: static !important;
+    animation: none;
+    width: auto !important;
+    height: auto !important;
+    transform: none !important;
+    pointer-events: all;
   }
 
-  .programming-skills-grid {
-    max-width: 100%;
-    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-    gap: 1rem;
+  .programming-orbit-chip {
+    position: static !important;
+    transform: none !important;
+    animation: none;
+    width: 100%;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    left: auto !important;
+    top: auto !important;
+  }
+
+  .programming-orbit-core {
+    position: relative !important;
+    transform: none !important;
+    grid-column: 1 / -1;
+    margin: 0 auto 1rem;
+    top: 0 !important;
+    left: 0 !important;
+  }
+
+  .programming-orbit-stage .atom-orbit {
+    display: none !important;
   }
 }
 
 @media (max-width: 480px) {
-  .skills-quote {
-    font-size: 1.1rem;
-  }
-
-  .skills-section-title {
-    font-size: 1.5rem;
-  }
-
-  .creative-skills-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .programming-skills-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem;
-  }
-
-  .programming-skill-card {
-    padding: 1rem 0.5rem;
-  }
-
-  .programming-skill-icon {
-    width: 36px;
-    height: 36px;
-  }
-
-  .programming-skill-name {
-    font-size: 0.75rem;
-  }
+  .skills-page-modern { gap: 1.5rem; }
+  .skills-quote { font-size: 1.1rem; }
+  .skills-section-title { font-size: 1.5rem; }
+  .creative-skills-grid, .programming-orbit-stage { grid-template-columns: 1fr; }
 }
