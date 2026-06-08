@@ -264,12 +264,6 @@
   transform-origin: center center !important;
   z-index: 3;
   pointer-events: none;
-  
-  /* FORCE LA ROTATION EN MULTIPLIANT LE NOMBRE BRUT PAR 1s */
-  animation: orbit-spin calc(var(--orbit-dur) * 1s) linear infinite;
-  
-  /* APPLIQUE LA DIRECTION D'ANIMATION STANDARD VIA SENS D'INVERSION DIRECT */
-  animation-direction: var(--orbit-dir);
 }
 
 .programming-orbit-chip {
@@ -277,13 +271,6 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  
-  top: 0 !important;
-  left: 0 !important;
-  
-  /* POSITIONNEMENT INITIAL EN CERCLE PARFAIT */
-  transform: translate(-50%, -50%) rotate(calc(var(--orbit-start) * 1deg)) translateX(calc(var(--orbit-radius) * 1px)) !important;
-  
   text-decoration: none;
   background: rgba(255, 255, 255, 0.95);
   padding: 6px 12px;
@@ -293,10 +280,6 @@
   pointer-events: all;
   white-space: nowrap;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  
-  /* CONTRE-ROTATION DU TEXTE POUR LE GARDER DROIT */
-  animation: orbit-counter calc(var(--orbit-dur) * 1s) linear infinite;
-  animation-direction: var(--orbit-dir);
 }
 
 .programming-orbit-chip:hover {
@@ -322,29 +305,6 @@
   font-size: 0.8rem;
   font-weight: 600;
   color: #333;
-}
-
-
-/* ========================================================================== */
-/* KEYFRAMES NETTOYÉS (ZÉRO ERREUR DE SYNTAXE CSS)                           */
-/* ========================================================================== */
-
-@keyframes orbit-spin {
-  from { 
-    transform: translate(-50%, -50%) rotate(0deg) !important; 
-  }
-  to { 
-    transform: translate(-50%, -50%) rotate(360deg) !important; 
-  }
-}
-
-@keyframes orbit-counter {
-  from { 
-    transform: translate(-50%, -50%) rotate(calc(var(--orbit-start) * 1deg)) translateX(calc(var(--orbit-radius) * 1px)) rotate(calc(var(--orbit-start) * -1deg)) !important; 
-  }
-  to { 
-    transform: translate(-50%, -50%) rotate(calc(var(--orbit-start) * 1deg)) translateX(calc(var(--orbit-radius) * 1px)) rotate(calc((var(--orbit-start) * -1deg) - 360deg)) !important; 
-  }
 }
 
 

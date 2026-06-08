@@ -1,4 +1,5 @@
 import type { CSSProperties } from 'react';
+import { useEffect } from 'react';
 import '../css/skills.css';
 import photoshopImage from '../images/photo-photoshop.webp';
 import pocketImage from '../images/photo-pocket.webp';
@@ -50,7 +51,6 @@ export default function Skills() {
     { name: 'WinDev', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/windows11/windows11-original.svg', doc: 'https://doc.pcsoft.fr/', ring: 2 },
   ];
 
-  // Modifié pour passer uniquement des nombres bruts et des directions de type chaine CSS valide
   const rings = [
     { radius: 180, duration: 25, direction: 'normal' },
     { radius: 270, duration: 35, direction: 'reverse' },
@@ -58,6 +58,38 @@ export default function Skills() {
   ];
 
   const byRing = [0, 1, 2].map(r => programmingSkills.filter(s => s.ring === r));
+
+  useEffect(() => {
+    let startTime: number | null = null;
+    let raf: number;
+
+    function animate(ts: number) {
+      if (!startTime) startTime = ts;
+      const elapsed = (ts - startTime) / 1000;
+
+      byRing.forEach((group, ri) => {
+        const { radius, duration, direction } = rings[ri];
+        const dir = direction === 'reverse' ? -1 : 1;
+        const count = group.length;
+
+        group.forEach((_, i) => {
+          const startDeg = (360 / count) * i;
+          const angle = (startDeg + dir * (elapsed / duration) * 360) * (Math.PI / 180);
+          const x = Math.cos(angle) * radius;
+          const y = Math.sin(angle) * radius;
+          const el = document.getElementById(`orbit-chip-${ri}-${i}`);
+          if (el) {
+            el.style.transform = `translate(calc(${x}px - 50%), calc(${y}px - 50%))`;
+          }
+        });
+      });
+
+      raf = requestAnimationFrame(animate);
+    }
+
+    raf = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(raf);
+  }, []);
 
   return (
     <div className="skills-page skills-page-modern">
@@ -98,31 +130,30 @@ export default function Skills() {
             </div>
 
             {byRing.map((group, ri) => {
-              const ring = rings[ri];
-              const count = group.length; 
               return group.map((skill, i) => {
-                const startDeg = (360 / count) * i;
+                const startDeg = (360 / group.length) * i;
+                const rad = startDeg * (Math.PI / 180);
+                const r = rings[ri].radius;
+                const initX = Math.cos(rad) * r;
+                const initY = Math.sin(rad) * r;
                 return (
-                  <div
+                  <a
                     key={skill.name}
-                    className="programming-orbit-arm"
+                    id={`orbit-chip-${ri}-${i}`}
+                    href={skill.doc}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="programming-orbit-chip"
                     style={{
-                      '--orbit-start': startDeg,
-                      '--orbit-dur': ring.duration,
-                      '--orbit-radius': ring.radius,
-                      '--orbit-dir': ring.direction,
+                      position: 'absolute',
+                      top: '50%',
+                      left: '50%',
+                      transform: `translate(calc(${initX}px - 50%), calc(${initY}px - 50%))`,
                     } as CSSProperties}
                   >
-                    <a
-                      href={skill.doc}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="programming-orbit-chip"
-                    >
-                      <img src={skill.icon} alt={skill.name} className="programming-skill-icon" loading="lazy" />
-                      <span className="programming-orbit-chip-name">{skill.name}</span>
-                    </a>
-                  </div>
+                    <img src={skill.icon} alt={skill.name} className="programming-skill-icon" loading="lazy" />
+                    <span className="programming-orbit-chip-name">{skill.name}</span>
+                  </a>
                 );
               });
             })}
