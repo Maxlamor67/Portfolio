@@ -163,7 +163,7 @@
   display: block !important;
 }
 
-/* Alignement central absolu de référence */
+/* Base de centrage absolu obligatoire */
 .programming-orbit-stage .ring,
 .programming-orbit-core,
 .programming-orbit-arm {
@@ -172,18 +172,14 @@
   left: 50% !important;
 }
 
-/* Masquage des anciens rails */
+/* Masquage des anciens cercles gris en conflit */
 .programming-orbit-stage .ring {
-  border: none !important;
-  background: transparent !important;
+  display: none !important;
 }
-.programming-orbit-stage .ring-inner { width: 440px; height: 440px; }
-.programming-orbit-stage .ring-mid   { width: 640px; height: 640px; }
-.programming-orbit-stage .ring-outer { width: 800px; height: 800px; }
 
 
 /* ========================================================================== */
-/* ANNEAUX DE L'ATOME (PERSPECTIVE)                                           */
+/* ANNEAUX DE L'ATOME (ELLIPSES DE FOND)                                      */
 /* ========================================================================== */
 
 .programming-orbit-stage .atom-orbit {
@@ -200,18 +196,18 @@
 }
 
 .programming-orbit-stage .orbit-1 {
-  transform: translate(-50%, -50%) rotateZ(30deg) scaleY(0.35) !important;
-  border: 1.5px solid rgba(114, 128, 255, 0.3) !important;
+  transform: translate(-50%, -50%) rotateZ(30deg) scaleY(0.4) !important;
+  border: 1.5px solid rgba(114, 128, 255, 0.25) !important;
 }
 
 .programming-orbit-stage .orbit-2 {
-  transform: translate(-50%, -50%) rotateZ(90deg) scaleY(0.35) !important;
-  border: 1.5px solid rgba(114, 128, 255, 0.22) !important;
+  transform: translate(-50%, -50%) rotateZ(90deg) scaleY(0.4) !important;
+  border: 1.5px solid rgba(114, 128, 255, 0.2) !important;
 }
 
 .programming-orbit-stage .orbit-3 {
-  transform: translate(-50%, -50%) rotateZ(150deg) scaleY(0.35) !important;
-  border: 1.5px solid rgba(80, 199, 255, 0.25) !important;
+  transform: translate(-50%, -50%) rotateZ(150deg) scaleY(0.4) !important;
+  border: 1.5px solid rgba(80, 199, 255, 0.22) !important;
 }
 
 
@@ -259,38 +255,34 @@
 
 
 /* ========================================================================== */
-/* BRAS DE ROTATION PHYSIQUE (PIVOTS DE ROTATION)                             */
+/* BRAS ET BADGES (LOGIQUE DE ROTATION FLUIDE)                                */
 /* ========================================================================== */
 
 .programming-orbit-arm {
   width: 0px !important;
   height: 0px !important;
-  transform-origin: 0 0 !important;
-  
-  /* Applique la répartition angulaire d'origine de chaque élément au chargement */
-  transform: translate(-50%, -50%) rotate(var(--orbit-start)) !important;
-  
-  /* Lancement de la rotation principale */
-  animation: orbit-spin var(--orbit-dur) linear infinite;
-  animation-delay: var(--orbit-delay, 0s);
+  transform-origin: center center !important;
   z-index: 3;
   pointer-events: none;
+  
+  /* FORCE LA ROTATION EN MULTIPLIANT LE NOMBRE BRUT PAR 1s */
+  animation: orbit-spin calc(var(--orbit-dur) * 1s) linear infinite;
+  
+  /* APPLIQUE LA DIRECTION D'ANIMATION STANDARD VIA SENS D'INVERSION DIRECT */
+  animation-direction: var(--orbit-dir);
 }
 
-/* Badges de langages */
 .programming-orbit-chip {
   position: absolute;
   display: flex;
   align-items: center;
   gap: 8px;
   
-  /* RECENTRAGE DE BASE : On annule le déportement top/left pour que le bras reste le centre */
   top: 0 !important;
   left: 0 !important;
   
-  /* LE DÉPORT ET L'ORIENTATION INITIALE : Pousse le badge à sa bonne distance 
-     et neutralise la rotation de départ pour garder le texte droit */
-  transform: translate(-50%, -50%) translateX(var(--orbit-radius)) rotate(calc(-1 * var(--orbit-start))) !important;
+  /* POSITIONNEMENT INITIAL EN CERCLE PARFAIT */
+  transform: translate(-50%, -50%) rotate(calc(var(--orbit-start) * 1deg)) translateX(calc(var(--orbit-radius) * 1px)) !important;
   
   text-decoration: none;
   background: rgba(255, 255, 255, 0.95);
@@ -302,15 +294,16 @@
   white-space: nowrap;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   
-  /* CONTRE-ANIMATION : On utilise var(--orbit-dur) et var(--orbit-delay) pour correspondre au parent */
-  animation: orbit-counter var(--orbit-dur) linear infinite;
-  animation-delay: var(--orbit-delay, 0s);
+  /* CONTRE-ROTATION DU TEXTE POUR LE GARDER DROIT */
+  animation: orbit-counter calc(var(--orbit-dur) * 1s) linear infinite;
+  animation-direction: var(--orbit-dir);
 }
 
 .programming-orbit-chip:hover {
   background: #ffffff;
   box-shadow: 0 6px 15px rgba(114, 128, 255, 0.2);
   border-color: rgba(114, 128, 255, 0.4);
+  z-index: 10;
 }
 
 .programming-orbit-chip:hover .programming-skill-icon {
@@ -333,25 +326,24 @@
 
 
 /* ========================================================================== */
-/* ANIMATIONS DES ROTATIONS CORRIGÉES MATRICIELLES                            */
+/* KEYFRAMES NETTOYÉS (ZÉRO ERREUR DE SYNTAXE CSS)                           */
 /* ========================================================================== */
 
 @keyframes orbit-spin {
   from { 
-    transform: translate(-50%, -50%) rotate(var(--orbit-start)) !important; 
+    transform: translate(-50%, -50%) rotate(0deg) !important; 
   }
   to { 
-    transform: translate(-50%, -50%) rotate(calc(var(--orbit-start) + calc(360deg * var(--orbit-dir, 1)))) !important; 
+    transform: translate(-50%, -50%) rotate(360deg) !important; 
   }
 }
 
 @keyframes orbit-counter {
-  /* Le rayon translateX() doit être présent dans le Keyframe pour maintenir l'élément sur son orbite */
   from { 
-    transform: translate(-50%, -50%) translateX(var(--orbit-radius)) rotate(calc(-1 * var(--orbit-start))) !important; 
+    transform: translate(-50%, -50%) rotate(calc(var(--orbit-start) * 1deg)) translateX(calc(var(--orbit-radius) * 1px)) rotate(calc(var(--orbit-start) * -1deg)) !important; 
   }
   to { 
-    transform: translate(-50%, -50%) translateX(var(--orbit-radius)) rotate(calc(calc(-360deg * var(--orbit-dir, 1)) - var(--orbit-start))) !important; 
+    transform: translate(-50%, -50%) rotate(calc(var(--orbit-start) * 1deg)) translateX(calc(var(--orbit-radius) * 1px)) rotate(calc((var(--orbit-start) * -1deg) - 360deg)) !important; 
   }
 }
 
@@ -361,13 +353,8 @@
 /* ========================================================================== */
 
 @media (max-width: 768px) {
-  .skills-quote {
-    font-size: 1.3rem;
-  }
-
-  .skills-section-title {
-    font-size: 1.8rem;
-  }
+  .skills-quote { font-size: 1.3rem; }
+  .skills-section-title { font-size: 1.8rem; }
 
   .programming-orbit-stage {
     aspect-ratio: unset;
@@ -411,29 +398,14 @@
     left: 0 !important;
   }
 
-  .programming-orbit-stage .ring,
-  .programming-orbit-stage .atom-orbit,
-  .programming-orbit-core::before,
-  .programming-orbit-core::after {
+  .programming-orbit-stage .atom-orbit {
     display: none !important;
   }
 }
 
 @media (max-width: 480px) {
-  .skills-page-modern {
-    gap: 1.5rem;
-  }
-
-  .skills-quote {
-    font-size: 1.1rem;
-  }
-
-  .skills-section-title {
-    font-size: 1.5rem;
-  }
-
-  .creative-skills-grid,
-  .programming-orbit-stage {
-    grid-template-columns: 1fr;
-  }
+  .skills-page-modern { gap: 1.5rem; }
+  .skills-quote { font-size: 1.1rem; }
+  .skills-section-title { font-size: 1.5rem; }
+  .creative-skills-grid, .programming-orbit-stage { grid-template-columns: 1fr; }
 }

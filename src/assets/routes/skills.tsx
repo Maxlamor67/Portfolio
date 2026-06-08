@@ -22,7 +22,6 @@ export function SkillsPanel() {
   );
 }
 
-// Contenu de la page en dessous
 export default function Skills() {
   const visualSkills = [
     { name: 'Photoshop', description: 'Retouche, montage et composition visuelle', image: photoshopImage, imageClass: '' },
@@ -33,7 +32,6 @@ export default function Skills() {
     { name: 'Blender', description: "Modélisation 3D et rendu d'objets", image: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/blender/blender-original.svg', imageClass: 'skill-image-blender', cardClass: 'creative-skill-card-blender', containerClass: 'skill-image-container-blender', isExternalUrl: true }
   ];
 
-  // Conservation stricte de tes anneaux d'origine (0 = inner, 1 = middle, 2 = outer)
   const programmingSkills = [
     { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg', doc: 'https://www.typescriptlang.org/docs/', ring: 0 },
     { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg', doc: 'https://developer.mozilla.org/docs/Web/JavaScript', ring: 0 },
@@ -52,11 +50,11 @@ export default function Skills() {
     { name: 'WinDev', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/windows11/windows11-original.svg', doc: 'https://doc.pcsoft.fr/', ring: 2 },
   ];
 
-  // Conservation stricte de tes rayons et vitesses d'origine
+  // Modifié pour passer uniquement des nombres bruts et des directions de type chaine CSS valide
   const rings = [
-    { radius: 220, duration: 28, direction: 1 },
-    { radius: 320, duration: 42, direction: -1 },
-    { radius: 400, duration: 58, direction: 1 },
+    { radius: 180, duration: 25, direction: 'normal' },
+    { radius: 270, duration: 35, direction: 'reverse' },
+    { radius: 360, duration: 45, direction: 'normal' },
   ];
 
   const byRing = [0, 1, 2].map(r => programmingSkills.filter(s => s.ring === r));
@@ -86,12 +84,10 @@ export default function Skills() {
         <h3 className="skills-section-title">Programmation</h3>
         <div className="programming-showcase">
           <div className="programming-orbit-stage">
-              {/* Rails physiques masqués */}
               <div className="ring ring-inner" />
               <div className="ring ring-mid" />
               <div className="ring ring-outer" />
               
-              {/* Orbites d'atome ajoutées et gérées via CSS */}
               <div className="atom-orbit orbit-1" />
               <div className="atom-orbit orbit-2" />
               <div className="atom-orbit orbit-3" />
@@ -111,10 +107,9 @@ export default function Skills() {
                     key={skill.name}
                     className="programming-orbit-arm"
                     style={{
-                      '--orbit-start': `${startDeg}deg`,
-                      '--orbit-dur': `${ring.duration}s`,
-                      '--orbit-delay': `${-((startDeg / 360) * ring.duration)}s`,
-                      '--orbit-radius': `${ring.radius}px`,
+                      '--orbit-start': startDeg,
+                      '--orbit-dur': ring.duration,
+                      '--orbit-radius': ring.radius,
                       '--orbit-dir': ring.direction,
                     } as CSSProperties}
                   >
@@ -123,11 +118,6 @@ export default function Skills() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="programming-orbit-chip"
-                      style={{
-                        '--counter-start': `${startDeg}deg`,
-                        '--counter-dur': `${ring.duration}s`,
-                        '--counter-delay': `${-((startDeg / 360) * ring.duration)}s`,
-                      } as CSSProperties}
                     >
                       <img src={skill.icon} alt={skill.name} className="programming-skill-icon" loading="lazy" />
                       <span className="programming-orbit-chip-name">{skill.name}</span>
