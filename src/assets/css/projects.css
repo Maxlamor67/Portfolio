@@ -151,7 +151,7 @@
   font-weight: 700;
   text-align: center;
   margin-bottom: 3rem;
-  background: linear-gradient(135deg, #cccccc 0%, #000000 100%);
+  background: linear-gradient(135deg, #8a8a8a 0%, #141414 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -164,8 +164,8 @@
 }
 
 .dev-project-card {
-  background: #fff;
-  border: 1px solid #eee;
+  background: rgba(255, 255, 255, 0.42);
+  border: 1px solid rgba(31, 31, 31, 0.08);
   border-radius: 16px;
   padding: 2rem 1.5rem;
   text-decoration: none;
