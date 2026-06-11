@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { Navigate, NavLink, useLocation, useNavigate, useNavigationType } from 'react-router-dom';
 import '../css/layout.css';
+import logoVideo from '../images/vidéo-logo.mp4';
 import Projects, { ProjectsPanel } from './projects';
 import About, { AboutPanel } from './about';
 import Skills, { SkillsPanel } from './skills';
@@ -53,7 +54,9 @@ export default function Layout() {
   const [displayedPath, setDisplayedPath] = useState<string>(initialDisplayedPath);
   const [isAnimating, setIsAnimating] = useState(false);
   const [slideDirection, setSlideDirection] = useState<'in' | 'out' | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const timeoutRef = useRef<number | null>(null);
+  const videoCycleTimeoutRef = useRef<number | null>(null);
 
   const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, targetPath: string) => {
     e.preventDefault();
@@ -98,13 +101,65 @@ export default function Layout() {
     }
   }, [location.pathname]);
 
+  useEffect(() => {
+    const video = videoRef.current;
+
+    if (!video) {
+      return;
+    }
+
+    const clearVideoCycleTimeout = () => {
+      if (videoCycleTimeoutRef.current) {
+        clearTimeout(videoCycleTimeoutRef.current);
+        videoCycleTimeoutRef.current = null;
+      }
+    };
+
+    const startVideoCycle = () => {
+      video.currentTime = 0;
+
+      void video.play().catch(() => undefined);
+
+      videoCycleTimeoutRef.current = window.setTimeout(() => {
+        video.pause();
+        video.currentTime = 0;
+
+        videoCycleTimeoutRef.current = window.setTimeout(() => {
+          startVideoCycle();
+        }, 200);
+      }, 200);
+    };
+
+    clearVideoCycleTimeout();
+    startVideoCycle();
+
+    return () => {
+      clearVideoCycleTimeout();
+      video.pause();
+      video.currentTime = 0;
+    };
+  }, []);
+
   if (navigationType === 'POP' && location.pathname !== '/') {
     return <Navigate to="/" replace />;
   }
 
   return (
     <div className="home-group">
-      <h1 className="home-title">Maxime Lamorlette</h1>
+      <div className="home-title home-video-wrap">
+        <video
+          ref={videoRef}
+          className="home-video"
+          autoPlay
+          muted
+          playsInline
+          preload="auto"
+          aria-label="Logo vidéo Maxime Lamorlette"
+        >
+          <source src={logoVideo} type="video/mp4" />
+          Votre navigateur ne prend pas en charge la vidéo.
+        </video>
+      </div>
       <nav className="button-group">
         <NavLink 
           to="/projects" 
