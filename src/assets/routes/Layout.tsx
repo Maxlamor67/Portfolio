@@ -126,8 +126,8 @@ export default function Layout() {
 
         videoCycleTimeoutRef.current = window.setTimeout(() => {
           startVideoCycle();
-        }, 200);
-      }, 200);
+        }, 20000);
+      }, 20000);
     };
 
     clearVideoCycleTimeout();
@@ -138,7 +138,7 @@ export default function Layout() {
       video.pause();
       video.currentTime = 0;
     };
-  }, []);
+  }, [location.pathname]);
 
   if (navigationType === 'POP' && location.pathname !== '/') {
     return <Navigate to="/" replace />;
