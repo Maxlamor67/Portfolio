@@ -389,7 +389,7 @@
 
 .expanded-box {
   margin-top: 0.75rem;
-  background: #fafafa;
+  background: rgba(255, 255, 255, 0.42);
   padding: 1rem;
   border-radius: 8px;
   border: 1px solid rgba(31,31,31,0.06);
