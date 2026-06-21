@@ -30,15 +30,15 @@ const seoMeta: Record<string, { title: string; description: string }> = {
   },
   '/projects': {
     title: 'Projets | Maxime Lamorlette',
-    description: 'Decouvrez les projets web realises par Maxime Lamorlette.',
+    description: 'Decouvrez les projets realises par Maxime Lamorlette.',
   },
   '/about': {
     title: 'A Propos | Maxime Lamorlette',
-    description: 'Presentation de Maxime Lamorlette, developpeur web.',
+    description: 'Presentation de Maxime Lamorlette',
   },
   '/skills': {
     title: 'Competences | Maxime Lamorlette',
-    description: 'Les competences techniques de Maxime Lamorlette en developpement web.',
+    description: 'Les competences techniques de Maxime Lamorlette en developpement',
   },
   '/contact': {
     title: 'Contact | Maxime Lamorlette',
