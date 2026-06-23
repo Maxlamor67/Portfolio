@@ -14,11 +14,11 @@ import sonicImage from '../images/photo-sonic.webp';
 import requinImage from '../images/photo-requin.webp';
 import fantominusImage from '../images/photo-fantominus.webp';
 import photoAseprite from '../images/photo-aseprite.webp';
-import imageT4ecranQR from '../images/image_waiting_room_T4.png';
-import photoPortfolio from '../images/photo-projet-portfolio.png';
-import photoLabyrinthe from '../images/photo-labyrinthe.png';
-import photoPokemon from '../images/photo-jeu-pokemon.png';
-import photoNidoggr from '../images/photo-t5.png';
+import imageT4ecranQR from '../images/image_waiting_room_T4.webp';
+import photoPortfolio from '../images/photo-projet-portfolio.webp';
+import photoLabyrinthe from '../images/photo-labyrinthe.webp';
+import photoPokemon from '../images/photo-jeu-pokemon.webp';
+import photoNidoggr from '../images/photo-t5.webp';
 
 
 type Project = {
@@ -164,7 +164,7 @@ export default function Projects() {
     },
   ];
 
-  
+
   const renderGalleryImage = (image: { src: string; alt: string }, className: string) => (
     <div className={`gallery-img ${className}`}>
       <img

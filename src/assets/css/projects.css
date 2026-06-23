@@ -548,6 +548,8 @@
 .dev-projects-carousel {
   position: relative;
   width: 100%;
+  padding: 0 50px; 
+  box-sizing: border-box;
 }
 
 /* Conteneur de défilement horizontal */
@@ -570,7 +572,7 @@
 .dev-projects-grid {
   display: flex;
   gap: 1.5rem;
-  padding: 0 1rem;
+  padding: 0;
   width: max-content;
 }
 
@@ -611,15 +613,17 @@
 }
 
 .dev-projects-nav:hover {
-  color: #a0a0a0; /* Gris un peu plus foncé au survol */
+  background: #ffffff;
+  color: #646cff; 
+  transform: translateY(-50%) scale(1.05);
 }
 
 .dev-projects-nav-left {
-  left: -40px; /* Positionne la flèche à gauche */
+  left: 0px; /* Positionne la flèche à gauche */
 }
 
 .dev-projects-nav-right {
-  right: -40px; /* Positionne la flèche à droite */
+  right: 0px; /* Positionne la flèche à droite */
 }
 
 
