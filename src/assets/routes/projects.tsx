@@ -164,6 +164,7 @@ export default function Projects() {
     },
   ];
 
+  
   const renderGalleryImage = (image: { src: string; alt: string }, className: string) => (
     <div className={`gallery-img ${className}`}>
       <img
