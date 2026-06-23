@@ -2,7 +2,6 @@
 import '../css/projects.css';
 import presentationImage from '../images/photo-itachi.webp';
 
-
 // Gallery images
 import rayquazaImage from '../images/photo-dessin-rayquaza.webp';
 import chequeInstaImage from '../images/photo-cheque-insta.webp';
@@ -14,16 +13,40 @@ import hollowImage from '../images/photo-hollow-bleu.webp';
 import sonicImage from '../images/photo-sonic.webp';
 import requinImage from '../images/photo-requin.webp';
 import fantominusImage from '../images/photo-fantominus.webp';
+import photoAseprite from '../images/photo-aseprite.webp';
+import imageT4ecranQR from '../images/image_waiting_room_T4.png';
+import photoPortfolio from '../images/photo-projet-portfolio.png';
+import photoLabyrinthe from '../images/photo-labyrinthe.png';
+import photoPokemon from '../images/photo-jeu-pokemon.png';
+
+
+
+
+
+// Project images — remplace par tes propres images si tu en as
+// import portfolioImg from '../images/photo-portfolio.webp';
+// import zombieImg from '../images/photo-zombie.webp';
+// etc.
+
+type Project = {
+  name: string;
+  shortDesc: string;
+  description: string;
+  features: string[];
+  tech: string[];
+  link: string;
+  image: string | null;
+};
 
 // Contenu du panel animé
 export function ProjectsPanel() {
   return (
     <div className="panel-content-image">
-        <img src={presentationImage} alt="Contact" className="contact-image" loading="lazy" />
-        <div className="panel-content">
+      <img src={presentationImage} alt="Contact" className="contact-image" loading="lazy" />
+      <div className="panel-content">
         <h2>Mes Projets</h2>
-      <p>Découvrez mes différents projets et réalisations.</p>
-        </div>
+        <p>Découvrez mes différents projets et réalisations.</p>
+      </div>
     </div>
   );
 }
@@ -31,7 +54,10 @@ export function ProjectsPanel() {
 // Contenu de la page en dessous
 export default function Projects() {
   const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
+  const [activeProject, setActiveProject] = useState<Project | null>(null);
+
   const openLightbox = (image: { src: string; alt: string }) => setLightbox(image);
+
   const galleryImages = [
     { src: rayquazaImage, alt: 'Dessin Rayquaza' },
     { src: berserkImage, alt: 'Berserk' },
@@ -43,38 +69,85 @@ export default function Projects() {
     { src: sonicImage, alt: 'Sonic' },
     { src: requinImage, alt: 'Requin' },
     { src: fantominusImage, alt: 'Fantominus' },
+    { src: photoAseprite, alt: 'Aseprite' },
   ];
 
-  const githubProjects = [
+  const githubProjects: Project[] = [
     {
       name: 'Portfolio',
-      description: 'Mon portfolio personnel construit avec React + TypeScript + Vite.',
+      shortDesc: 'Portfolio personnel construit avec React + TypeScript + Vite.',
+      description:
+        'Mon portfolio personnel présentant mes projets de développement et ma galerie graphique. Conçu pour vous présenter mes compétences, mes passions et mes réalisations.',
+      features: [
+        'Galerie graphique de photos-montages et dessins',
+        'Panel animé par section',
+        'Design responsive mobile / desktop',
+        'Chargement lazy des images',
+      ],
       tech: ['React', 'TypeScript', 'Vite'],
       link: 'https://github.com/Maxlamor67/Portfolio',
+      image: photoPortfolio, // image: portfolioImg
     },
     {
-      name: 'Projet de cours nommé T4',
-      description: 'Projet T4 développé en TypeScript.',
+      name: 'Frise-moi ça!',
+      shortDesc: 'Projet de cours développé en TypeScript nommé Frise-moi ça.',
+      description:
+        '"Frise-Moi-ça !" est un jeu web pédagogique où l\'objectif du jeu est de construire une frise historique des services publics en plaçant correctement des cartes dans l\'ordre chronologique.Le premier joueur à atteindre le nombre de points requis gagne la partie.',
+      features: [
+        'serveur web socket pour le jeu multijoueur',
+        'gestion de l\'ordre chronologique des cartes avec son affichage',
+        'Drag and drop des cartes pour les placer sur la frise',
+        'Gestion de QR code pour rejoindre la partie',
+      ],
       tech: ['TypeScript'],
       link: 'https://github.com/Maxlamor67/T4_vrai',
+      image: imageT4ecranQR,
     },
+    
     {
       name: 'Jeu Labyrinthe',
-      description: 'Jeu du labyrinthe développé en Java.',
+      shortDesc: 'Jeu de plateau labyrinthe, développé comme application en Java.',
+      description:
+        'Jeu de plateau Labyrinthe développé en Java avec interface graphique Swing. Le jeu permet à plusieurs joueurs de naviguer dans un labyrinthe généré aléatoirement, en évitant les obstacles et en collectant des objets imposés pour atteindre la sortie.',
+      features: [
+        'Création d\'UML et diagrammes de classes',
+        'Gestion des collisions',
+        'Interface graphique Java Swing et plateau fait à la main',
+        'possibilité de jouer à plusieurs joueurs',
+      ],
       tech: ['Java'],
       link: 'https://github.com/Maxlamor67/Jeu_Labyrinthe',
+      image: photoLabyrinthe, // image: labyrintheImg
     },
     {
-      name: 'Pokemon jeu de carte fait en Java',
-      description: 'Jeu de carte Pokémon développé en Java.',
+      name: 'Pokémon TCG',
+      shortDesc: 'Jeu de cartes Pokémon développé en Java.',
+      description:
+        'Simulation d\'un jeu de cartes Pokémon avec mécaniques de combat tour par tour, construction de deck et gestion des statistiques des Pokémon.',
+      features: [
+        'Combat tour par tour dans le terminal',
+        'Système de deck building',
+        'Stats et types Pokémon',
+        'Gestion des points de vie et attaques',
+      ],
       tech: ['Java'],
       link: 'https://github.com/Maxlamor67/Pokemon_Java',
+      image: photoPokemon, // image: pokemonImg
     },
     {
       name: 'ZombieSamourai',
-      description: 'Jeu en cours de développement — ZombieSamourai.',
+      shortDesc: 'Jeu d\'action en cours de développement — Unity / C#.',
+      description:
+        'Jeu d\'action en cours de développement mettant en scène un samouraï zombi. Développé sous Unity avec des assets personnalisés et un gameplay orienté action.',
+      features: [
+        'En développement actif',
+        'Gameplay action / combat',
+        'Assets et animations custom en pixel-art',
+        'Moteur Unity 2D',
+      ],
       tech: ['Unity', 'C#'],
       link: 'https://github.com/Maxlamor67/ZombieSamourai',
+      image: photoAseprite, // image: zombieImg
     },
   ];
 
@@ -97,41 +170,145 @@ export default function Projects() {
 
   return (
     <div className="projects-page">
-        <section className="dev-projects-section">
+
+      {/* ── Section projets dev ── */}
+      <section className="dev-projects-section">
         <h3 className="dev-projects-title">Projets de Développement</h3>
         <div className="dev-projects-grid">
           {githubProjects.map((project) => (
-            <a
+            <div
               key={project.name}
               className="dev-project-card"
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={() => setActiveProject(project)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) =>
+                (e.key === 'Enter' || e.key === ' ') && setActiveProject(project)
+              }
             >
-              <div className="dev-project-icon">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
-                </svg>
+              {/* Image du projet ou placeholder */}
+              {project.image ? (
+                <img
+                  src={project.image}
+                  alt={project.name}
+                  className="dev-project-img"
+                  loading="lazy"
+                />
+              ) : (
+                <div className="dev-project-img-placeholder">
+                  <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                  </svg>
+                </div>
+              )}
+
+              <div className="dev-project-body">
+                <h4 className="dev-project-name">{project.name}</h4>
+                <p className="dev-project-desc">{project.shortDesc}</p>
+                <div className="dev-project-tech">
+                  {project.tech.map((t) => (
+                    <span key={t} className="tech-tag">{t}</span>
+                  ))}
+                </div>
+                <span className="dev-project-cta">Voir le projet →</span>
               </div>
-              <h4 className="dev-project-name">{project.name}</h4>
-              <p className="dev-project-desc">{project.description}</p>
-              <div className="dev-project-tech">
-                {project.tech.map((t) => (
-                  <span key={t} className="tech-tag">{t}</span>
-                ))}
-              </div>
-            </a>
+            </div>
           ))}
         </div>
       </section>
 
+      {/* ── Modal projet ── */}
+      {activeProject && (
+        <div
+          className="project-modal-overlay"
+          onClick={() => setActiveProject(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={activeProject.name}
+        >
+          <div
+            className="project-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="project-modal-close"
+              onClick={() => setActiveProject(null)}
+              aria-label="Fermer"
+            >
+              &times;
+            </button>
+
+            {/* Image ou placeholder */}
+            {activeProject.image ? (
+              <img
+                src={activeProject.image}
+                alt={activeProject.name}
+                className="project-modal-img"
+                loading="eager"
+              />
+            ) : (
+              <div className="project-modal-img-placeholder">
+                <svg viewBox="0 0 24 24" width="48" height="48" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                </svg>
+              </div>
+            )}
+
+            <div className="project-modal-body">
+              <h3 className="project-modal-title">{activeProject.name}</h3>
+
+              <div className="dev-project-tech">
+                {activeProject.tech.map((t) => (
+                  <span key={t} className="tech-tag">{t}</span>
+                ))}
+              </div>
+
+              <p className="project-modal-desc">{activeProject.description}</p>
+
+              <ul className="project-modal-features">
+                {activeProject.features.map((f) => (
+                  <li key={f}>{f}</li>
+                ))}
+              </ul>
+
+              <div className="project-modal-footer">
+                <button
+                  className="project-modal-btn-close"
+                  onClick={() => setActiveProject(null)}
+                >
+                  Fermer
+                </button>
+                <a
+                  href={activeProject.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-modal-btn-gh"
+                >
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                  </svg>
+                  Voir sur GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── Galerie graphique ── */}
       <h3 className="dev-projects-title">Galerie Graphique</h3>
 
       {/* Lightbox */}
       {lightbox && (
         <div className="lightbox-overlay" onClick={() => setLightbox(null)}>
           <button className="lightbox-close" onClick={() => setLightbox(null)}>&times;</button>
-          <img src={lightbox.src} alt={lightbox.alt} className="lightbox-image" loading="eager" onClick={(e) => e.stopPropagation()} />
+          <img
+            src={lightbox.src}
+            alt={lightbox.alt}
+            className="lightbox-image"
+            loading="eager"
+            onClick={(e) => e.stopPropagation()}
+          />
         </div>
       )}
 
