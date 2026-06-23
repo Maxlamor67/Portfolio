@@ -63,6 +63,11 @@ export default function Projects() {
     { src: requinImage, alt: 'Requin' },
     { src: fantominusImage, alt: 'Fantominus' },
     { src: photoAseprite, alt: 'Aseprite' },
+    { src: imageT4ecranQR, alt: 'Frise-moi ça!' },
+    { src: photoPortfolio, alt: 'Portfolio' },
+    { src: photoLabyrinthe, alt: 'Jeu Labyrinthe' },
+    { src: photoPokemon, alt: 'Jeu Pokémon TCG' },
+    { src: photoNidoggr, alt: 'Níðhöggr' },
   ];
 
   const githubProjects: Project[] = [
