@@ -114,7 +114,7 @@ export default function Projects() {
         'possibilité de jouer à plusieurs joueurs',
       ],
       tech: ['Java'],
-      link: 'https://github.com/Maxlamor67/Jeu_Labyrinthe',
+      link: 'https://github.com/Maxlamor67/Projet-Labyrinthe',
       image: photoLabyrinthe, // image: labyrintheImg
     },
     {
@@ -129,7 +129,7 @@ export default function Projects() {
         'Gestion des points de vie et attaques',
       ],
       tech: ['Java'],
-      link: 'https://github.com/Maxlamor67/Pokemon_Java',
+      link: 'https://github.com/Maxlamor67/Projet-POOkemon',
       image: photoPokemon, // image: pokemonImg
     },
     {
@@ -153,7 +153,7 @@ export default function Projects() {
     description:
       'Application composée d\'une partie mobile, d\'un logiciel et d\'un site web connectés par QR code, pour faciliter la logistique et la sécurisation des manifestations sportives en ville. ' +
       'Permet de gérer les équipements (barrières, blocs de béton, etc.), les points d\'intérêt, les plannings des équipes, et l\'export des données (Excel, PDF). ' +
-      'Développé en 4 sprints avec authentification, gestion de projets, et cartographie locale.',
+      'Développé en 4 sprints avec authentification, gestion de projets, et cartographie locale.Projet réalisé en équipe de 4 personnes dans le cadre d\'un projet universitaire, (équipe nommé yggdrasil).',
     features: [
       'Application mobile (géolocalisation, saisie de points, guidage, scan QR)',
       'Logiciel lourd (cartographie locale, gestion des équipements, export Excel/PDF)',
@@ -164,7 +164,7 @@ export default function Projects() {
       'Fonctionnement hors ligne (toutes les ressources locales)',
     ],
     tech: ['Prisma', 'TypeScript', 'React', 'PDF/Excel export','Docker'],
-    link: 'https://github.com/Maxlamor67/Nidhoggur', 
+    link: 'https://github.com/Maxlamor67/Projet-Yggdrasil', 
     image: photoNidoggr, // image: nidoggrImg
     },
   ];
